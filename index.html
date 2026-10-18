@@ -1,755 +1,331 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pollería & Parrillas Don Tito | Sabor Tradicional Peruano</title>
-    <!-- Tailwind CSS -->
+    <title>Pollería & Parrillas Don Tito | El Sabor de la Brasa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Inter & Montserrat -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            red: '#DC2626',
-                            gold: '#F59E0B',
-                            dark: '#18181B',
-                            card: '#27272A',
-                            border: '#3F3F46',
-                            light: '#F4F4F5'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #18181B;
-            color: #F4F4F5;
-            font-family: 'Inter', sans-serif;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #18181B;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #3F3F46;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #F59E0B;
-        }
-        .bg-glass {
-            background: rgba(24, 24, 27, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        @keyframes pulse-subtle {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        .animate-pulse-subtle {
-            animation: pulse-subtle 3s infinite ease-in-out;
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; }
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.85)), 
+                        url('./banner.jpg'), 
+                        url('./banner.jpeg'),
+                        url('./banner.png'),
+                        url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-brand-red selection:text-white flex flex-col min-h-screen">
+<body class="bg-zinc-950 text-gray-100 min-h-screen flex flex-col justify-between">
 
-    <!-- NAV BAR STICKY -->
-    <header class="sticky top-0 z-50 bg-glass border-b border-brand-border transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- BRAND LOGO & NAME -->
-                <a href="#" class="flex items-center space-x-3 group">
-                    <div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-brand-gold shadow-lg shadow-brand-red/20 flex-shrink-0 bg-brand-card">
-                        <img id="navLogo" src="./logo.jpg" alt="Don Tito Logo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/150x150/DC2626/FFFFFF?text=Don+Tito';">
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-lg font-black tracking-tight text-white group-hover:text-brand-gold transition-colors leading-tight" id="navBrandName">
-                            DON TITO
-                        </span>
-                        <span class="text-xs font-semibold text-brand-gold tracking-widest uppercase">Pollería & Parrillas</span>
-                    </div>
+    <!-- NAVBAR -->
+    <nav class="bg-black/90 border-b border-red-900/40 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#inicio" class="flex items-center space-x-3">
+                <img id="app-logo" src="./logo.jpg" onerror="this.onerror=null; this.src='./logo.png'; if(!this.src) this.src='./logo.jpeg';" alt="Don Tito" class="w-14 h-14 rounded-full object-cover border-2 border-red-600 shadow-md">
+                <div>
+                    <span class="text-xl font-black tracking-wider text-red-500 uppercase block leading-none">DON TITO</span>
+                    <span class="text-xs font-semibold text-amber-400 tracking-widest uppercase">POLLERÍA & PARRILLAS</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#inicio" class="hover:text-red-400 transition-colors">Inicio</a>
+                <a href="#carta" class="hover:text-red-400 transition-colors">Carta Digital</a>
+                <a href="#nosotros" class="hover:text-red-400 transition-colors">Nosotros</a>
+                <a href="#ubicacion" class="hover:text-red-400 transition-colors">Ubicación</a>
+            </div>
+
+            <!-- REDES SOCIALES Y BOTÓN PEDIDO -->
+            <div class="flex items-center space-x-4">
+                <div id="nav-socials" class="hidden sm:flex items-center space-x-3 border-r border-zinc-800 pr-4"></div>
+                <a id="nav-ws-btn" href="#" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2.5 rounded-full flex items-center space-x-2 transition-all transform hover:scale-105 shadow-md">
+                    <i class="fab font-bold fa-whatsapp text-lg"></i>
+                    <span class="text-sm">HACER PEDIDO</span>
                 </a>
-
-                <!-- DESKTOP MENU LINKS -->
-                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                    <a href="#inicio" class="hover:text-brand-gold transition-colors py-1">Inicio</a>
-                    <a href="#carta" class="hover:text-brand-gold transition-colors py-1">Nuestra Carta</a>
-                    <a href="#nosotros" class="hover:text-brand-gold transition-colors py-1">Nosotros</a>
-                    <a href="#ubicacion" class="hover:text-brand-gold transition-colors py-1">Ubicación</a>
-                </nav>
-
-                <!-- DESKTOP CTA & SOCIALS -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <div class="flex items-center space-x-3 pr-2 border-r border-brand-border">
-                        <a id="navFb" href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-gold transition-colors text-lg" aria-label="Facebook">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a id="navIg" href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-gold transition-colors text-lg" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                    <a id="navWspBtn" href="#" target="_blank" rel="noopener noreferrer" class="bg-brand-red hover:bg-red-700 text-white font-bold px-5 py-2.5 rounded-full shadow-lg shadow-brand-red/30 transition-all transform hover:-translate-y-0.5 flex items-center space-x-2 text-sm">
-                        <i class="fab fa-whatsapp text-lg"></i>
-                        <span>Pedir Ahora</span>
-                    </a>
-                </div>
-
-                <!-- MOBILE HAMBURGER BUTTON -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobileMenuBtn" type="button" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Abrir Menú">
-                        <i class="fas fa-bars text-2xl" id="menuIcon"></i>
-                    </button>
-                </div>
             </div>
         </div>
+    </nav>
 
-        <!-- MOBILE MENU DROPDOWN -->
-        <div id="mobileMenu" class="hidden md:hidden bg-brand-dark/95 border-b border-brand-border px-4 pt-2 pb-6 space-y-3">
-            <a href="#inicio" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-card hover:text-brand-gold">Inicio</a>
-            <a href="#carta" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-card hover:text-brand-gold">Nuestra Carta</a>
-            <a href="#nosotros" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-card hover:text-brand-gold">Nosotros</a>
-            <a href="#ubicacion" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-brand-card hover:text-brand-gold">Ubicación</a>
-            <div class="pt-4 border-t border-brand-border flex items-center justify-between">
-                <div class="flex space-x-4 text-xl text-gray-300">
-                    <a id="mobileFb" href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a id="mobileIg" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-                <a id="mobileWspBtn" href="#" target="_blank" class="bg-brand-red text-white font-bold px-4 py-2 rounded-full text-sm flex items-center space-x-2">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>Pedir WhatsApp</span>
+    <!-- HERO SECTION -->
+    <header id="inicio" class="hero-bg py-20 px-4 text-center flex items-center justify-center min-h-[70vh]">
+        <div class="max-w-3xl mx-auto">
+            <span class="bg-red-600/30 text-red-400 border border-red-500/50 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-4">
+                🔥 Tradición a las Brasas y Carbón
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
+                Pollería & Parrillas <span class="text-red-500">Don Tito</span>
+            </h1>
+            
+            <p id="txt-modalidades" class="text-amber-400/90 text-xs md:text-sm font-semibold tracking-wider uppercase mb-6">
+                🍽️ Atendemos: Comedor en Salón • Para Llevar • Delivery
+            </p>
+
+            <p class="text-gray-300 text-base md:text-lg mb-8 max-w-2xl mx-auto">
+                Disfruta de nuestros jugosos pollos a la brasa, cortes de carne a la parrilla, piqueos y las mejores cremas artesanales.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#carta" class="bg-red-600 hover:bg-red-500 text-white font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg text-center">
+                    Ver Carta Digital
+                </a>
+                <a id="hero-delivery-btn" href="#" target="_blank" class="bg-zinc-800 hover:bg-zinc-700 text-white font-semibold px-8 py-3.5 rounded-xl border border-zinc-600 transition-all text-center">
+                    Pedir por WhatsApp
                 </a>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow">
-        
-        <!-- HERO SECTION -->
-        <section id="inicio" class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-16">
-            <!-- Background Image with Overlay -->
-            <div class="absolute inset-0 z-0">
-                <img id="heroBanner" src="./banner.jpg" alt="Pollo a la Brasa Don Tito" class="w-full h-full object-cover object-center" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=1920&auto=format&fit=crop';">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-brand-dark/60"></div>
-            </div>
+    <!-- CARTA DIGITAL -->
+    <section id="carta" class="py-16 px-4 max-w-7xl mx-auto w-full">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-red-500 mb-2">NUESTRA CARTA</h2>
+            <p class="text-gray-400 text-sm">Selecciona una categoría y realiza tu pedido directo al WhatsApp</p>
+        </div>
 
-            <!-- Hero Content -->
-            <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                
-                <!-- Service Badges -->
-                <div class="inline-flex flex-wrap justify-center gap-2 sm:gap-3 mb-6">
-                    <span class="bg-brand-red/90 text-white text-xs sm:text-sm font-semibold px-3 py-1 rounded-full backdrop-blur-md flex items-center gap-1.5 shadow-md">
-                        <i class="fas fa-motorcycle"></i> Delivery Express
-                    </span>
-                    <span class="bg-brand-gold/90 text-brand-dark text-xs sm:text-sm font-bold px-3 py-1 rounded-full backdrop-blur-md flex items-center gap-1.5 shadow-md">
-                        <i class="fas fa-utensils"></i> Atención en Salón
-                    </span>
-                    <span class="bg-zinc-800/90 text-gray-200 text-xs sm:text-sm font-semibold px-3 py-1 rounded-full border border-zinc-700 backdrop-blur-md flex items-center gap-1.5">
-                        <i class="fas fa-shopping-bag"></i> Para Llevar
-                    </span>
-                </div>
+        <div id="category-filters" class="flex flex-wrap justify-center gap-2 mb-10">
+            <button onclick="filterCategory('TODOS', this)" class="cat-btn active bg-red-600 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all">Todos</button>
+        </div>
 
-                <!-- Main Headlines -->
-                <h1 id="heroTitle" class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight uppercase leading-none mb-4 drop-shadow-lg">
-                    El Verdadero Sabor a la <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-red">Brasa & Parrilla</span>
-                </h1>
-                
-                <p id="heroSubtitle" class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto font-normal leading-relaxed mb-8">
-                    Jugoso por dentro, crocante por fuera. Disfruta de la mejor calidad gastronómica con sazón tradicional peruana en San Miguel.
-                </p>
-
-                <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#carta" class="w-full sm:w-auto bg-brand-gold hover:bg-amber-500 text-brand-dark font-extrabold px-8 py-4 rounded-xl shadow-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 text-base uppercase tracking-wider">
-                        <i class="fas fa-book-open"></i> Ver Nuestra Carta
-                    </a>
-                    <a id="heroWspBtn" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-brand-red hover:bg-red-700 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-brand-red/20 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 text-base">
-                        <i class="fab fa-whatsapp text-xl"></i> Pedir por WhatsApp
-                    </a>
-                </div>
-
-                <!-- Quick Info Bar -->
-                <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-brand-border/60 text-left max-w-4xl mx-auto">
-                    <div class="flex items-center space-x-3 bg-brand-card/40 p-3 rounded-lg border border-brand-border/40">
-                        <i class="fas fa-map-marker-alt text-brand-gold text-2xl"></i>
-                        <div>
-                            <p class="text-xs text-gray-400 font-medium">Ubicación Principal</p>
-                            <p class="text-sm font-semibold text-white" id="heroAddress">Av. Universitaria 1450, San Miguel</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3 bg-brand-card/40 p-3 rounded-lg border border-brand-border/40">
-                        <i class="fas fa-clock text-brand-gold text-2xl"></i>
-                        <div>
-                            <p class="text-xs text-gray-400 font-medium">Horario de Atención</p>
-                            <p class="text-sm font-semibold text-white" id="heroHours">Lun - Dom: 12:00 PM - 11:00 PM</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3 bg-brand-card/40 p-3 rounded-lg border border-brand-border/40">
-                        <i class="fas fa-phone-alt text-brand-gold text-2xl"></i>
-                        <div>
-                            <p class="text-xs text-gray-400 font-medium">Pedidos Directos</p>
-                            <p class="text-sm font-semibold text-white" id="heroPhone">+51 987 654 321</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECCIÓN CARTA / MENÚ -->
-        <section id="carta" class="py-16 bg-brand-dark border-t border-brand-border relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <!-- Section Title -->
-                <div class="text-center max-w-3xl mx-auto mb-10">
-                    <span class="text-brand-gold text-sm font-bold uppercase tracking-widest">Nuestras Especialidades</span>
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1">CARTA GASTRONÓMICA</h2>
-                    <div class="w-20 h-1 bg-brand-red mx-auto mt-4 rounded-full"></div>
-                </div>
-
-                <!-- CATEGORY FILTERS (Dynamic) -->
-                <div class="flex items-center justify-start md:justify-center overflow-x-auto pb-4 mb-8 gap-2 scrollbar-none" id="categoryFilters">
-                    <!-- Dynamic Buttons generated by JS -->
-                    <button class="px-5 py-2.5 rounded-full text-sm font-bold bg-brand-red text-white transition-all shadow-md">Cargando...</button>
-                </div>
-
-                <!-- DISHES GRID -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="dishesGrid">
-                    <!-- Dynamic Cards generated by JS -->
-                </div>
-
-                <!-- Empty State Message -->
-                <div id="emptyMessage" class="hidden text-center py-12">
-                    <i class="fas fa-utensils text-4xl text-gray-600 mb-3"></i>
-                    <p class="text-gray-400 text-lg">No se encontraron platos en esta categoría.</p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- NOSOTROS SECTION -->
-        <section id="nosotros" class="py-16 bg-brand-card/50 border-t border-brand-border">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    
-                    <div class="relative">
-                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-brand-border">
-                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000&auto=format&fit=crop" alt="Restaurante Don Tito" class="w-full h-[400px] object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent"></div>
-                        </div>
-                        <!-- Experience Badge -->
-                        <div class="absolute -bottom-6 -right-2 sm:right-6 bg-brand-gold text-brand-dark p-4 rounded-2xl shadow-xl flex items-center space-x-3 border-2 border-brand-dark">
-                            <i class="fas fa-award text-3xl"></i>
-                            <div>
-                                <p class="text-xl font-black leading-none">100% Sazón</p>
-                                <p class="text-xs font-bold uppercase tracking-wider">Tradición Peruana</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <span class="text-brand-gold text-sm font-bold uppercase tracking-widest">Nuestra Historia</span>
-                        <h2 class="text-3xl sm:text-4xl font-black text-white mt-2 mb-6">PASIÓN POR EL BUEN SABOR Y LA TRADICIÓN</h2>
-                        <p class="text-gray-300 mb-4 leading-relaxed">
-                            En <strong class="text-brand-gold">Pollería & Parrillas Don Tito</strong> elaboramos nuestro pollo a la brasa con una receta secreta de especias e ingredientes 100% peruanos, marinado minuciosamente para garantizar un sabor jugoso e inconfundible.
-                        </p>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            Nos apasiona reunir a las familias en San Miguel alrededor de una mesa llena de las mejores papas crocantes, cremas artesanales y cortes de carne a la parrilla seleccionados con el más alto estándar de calidad.
-                        </p>
-
-                        <!-- Features list -->
-                        <div class="grid grid-cols-2 gap-4 text-sm font-semibold">
-                            <div class="flex items-center space-x-2 text-gray-200">
-                                <i class="fas fa-check-circle text-brand-red"></i>
-                                <span>Ingredientes Frescos</span>
-                            </div>
-                            <div class="flex items-center space-x-2 text-gray-200">
-                                <i class="fas fa-check-circle text-brand-red"></i>
-                                <span>Papas 100% Peruanas</span>
-                            </div>
-                            <div class="flex items-center space-x-2 text-gray-200">
-                                <i class="fas fa-check-circle text-brand-red"></i>
-                                <span>Cremas Caseras</span>
-                            </div>
-                            <div class="flex items-center space-x-2 text-gray-200">
-                                <i class="fas fa-check-circle text-brand-red"></i>
-                                <span>Cortes Seleccionados</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- UBICACIÓN Y MAPA SECTION -->
-        <section id="ubicacion" class="py-16 bg-brand-dark border-t border-brand-border">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <span class="text-brand-gold text-sm font-bold uppercase tracking-widest">Visítanos o Solicita Delivery</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">UBICACIÓN & HORARIOS</h2>
-                    <div class="w-20 h-1 bg-brand-red mx-auto mt-4 rounded-full"></div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                    
-                    <!-- Contact Cards -->
-                    <div class="space-y-4 lg:col-span-1">
-                        <div class="bg-brand-card p-6 rounded-2xl border border-brand-border flex items-start space-x-4">
-                            <div class="p-3 bg-brand-red/10 rounded-xl text-brand-red text-xl">
-                                <i class="fas fa-map-marked-alt"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-white text-base">Dirección</h3>
-                                <p class="text-gray-300 text-sm mt-1" id="infoAddress">Av. Universitaria 1450, San Miguel, Lima, Perú</p>
-                                <span class="inline-block text-xs font-semibold text-brand-gold mt-2">Frente a San Marcos / Cerca a la PUCP</span>
-                            </div>
-                        </div>
-
-                        <div class="bg-brand-card p-6 rounded-2xl border border-brand-border flex items-start space-x-4">
-                            <div class="p-3 bg-brand-gold/10 rounded-xl text-brand-gold text-xl">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-white text-base">Horario Comercial</h3>
-                                <p class="text-gray-300 text-sm mt-1" id="infoHours">Lunes a Domingo<br>12:00 PM - 11:00 PM</p>
-                            </div>
-                        </div>
-
-                        <div class="bg-brand-card p-6 rounded-2xl border border-brand-border flex items-start space-x-4">
-                            <div class="p-3 bg-green-500/10 rounded-xl text-green-500 text-xl">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-white text-base">Central de Pedidos</h3>
-                                <p class="text-gray-300 text-sm mt-1" id="infoPhone">+51 987 654 321</p>
-                                <a id="sectionWspBtn" href="#" target="_blank" class="inline-flex items-center text-xs font-bold text-green-400 hover:text-green-300 mt-2">
-                                    Enviar mensaje directo <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Map iFrame -->
-                    <div class="lg:col-span-2 rounded-2xl overflow-hidden border border-brand-border h-[400px] shadow-2xl relative bg-brand-card">
-                        <iframe 
-                            id="gmapIframe"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.839443229606!2d-77.081829!3d-12.072237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c96f2a6327b9%3A0x6b10287a2d8a5525!2sAv.%20Universitaria%201450%2C%20San%20Miguel%2015088!5e0!3m2!1ses-419!2spe!4v1700000000000!5m2!1ses-419!2spe" 
-                            class="w-full h-full border-0" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="Mapa de Ubicación Don Tito">
-                        </iframe>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="bg-black text-gray-400 py-12 border-t border-brand-border/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                
-                <!-- Col 1: Brand Info -->
-                <div class="md:col-span-2 space-y-4">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-full overflow-hidden border border-brand-gold bg-brand-card">
-                            <img id="footerLogo" src="./logo.jpg" alt="Logo Don Tito" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/DC2626/FFFFFF?text=DT';">
-                        </div>
-                        <span class="text-xl font-black text-white tracking-wider" id="footerBrandName">DON TITO</span>
-                    </div>
-                    <p class="text-sm text-gray-400 max-w-md">
-                        Sabor irresistible en pollos a la brasa, parrillas y acompañamientos. Comprometidos con la mejor atención y calidad para toda la familia.
-                    </p>
-                </div>
-
-                <!-- Col 2: Navigation Links -->
-                <div>
-                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-l-2 border-brand-red pl-2">Navegación</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#inicio" class="hover:text-brand-gold transition-colors">Inicio</a></li>
-                        <li><a href="#carta" class="hover:text-brand-gold transition-colors">Carta Completa</a></li>
-                        <li><a href="#nosotros" class="hover:text-brand-gold transition-colors">Sobre Nosotros</a></li>
-                        <li><a href="#ubicacion" class="hover:text-brand-gold transition-colors">Ubicación & Contacto</a></li>
-                    </ul>
-                </div>
-
-                <!-- Col 3: Social & Contact -->
-                <div>
-                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-l-2 border-brand-gold pl-2">Síguenos</h4>
-                    <div class="flex space-x-3 mb-4">
-                        <a id="footerFb" href="#" target="_blank" class="w-9 h-9 rounded-full bg-brand-card hover:bg-brand-red text-white flex items-center justify-center transition-colors">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a id="footerIg" href="#" target="_blank" class="w-9 h-9 rounded-full bg-brand-card hover:bg-brand-gold hover:text-brand-dark text-white flex items-center justify-center transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                    <p class="text-xs text-gray-500">Av. Universitaria 1450, San Miguel</p>
-                </div>
-
-            </div>
-
-            <div class="pt-8 border-t border-zinc-800 text-center text-xs text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-2">
-                <p>&copy; <span id="currentYear"></span> Pollería & Parrillas Don Tito. Todos los derechos reservados.</p>
-                <p class="text-zinc-600">Sistema Autogestionable para Restaurantes</p>
+        <div id="dishes-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="col-span-full text-center py-12 text-gray-400">
+                <i class="fas fa-spinner fa-spin text-3xl text-red-500 mb-3"></i>
+                <p>Cargando menú en tiempo real...</p>
             </div>
         </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section id="nosotros" class="py-16 bg-zinc-900/80 border-t border-red-900/30 px-4">
+        <div class="max-w-5xl mx-auto text-center">
+            <span class="text-red-500 font-bold text-sm tracking-widest uppercase">Tradición & Calidad</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-2 mb-6">Sobre Don Tito</h2>
+            <p class="text-gray-300 text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-8">
+                En Don Tito preparamos cada plato con insumos seleccionados, manteniendo la receta secreta de sazón a la brasa que deleita a las familias en cada visita.
+            </p>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN & HORARIO -->
+    <section id="ubicacion" class="py-16 bg-black/50 border-t border-red-900/30 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-red-500 font-bold text-sm tracking-widest uppercase">Encuéntranos</span>
+                <h2 class="text-3xl font-bold text-white mt-1 mb-6">Ubicación y Atención</h2>
+                
+                <div class="space-y-6 text-gray-300">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-lg bg-red-600/20 text-red-500 flex items-center justify-center shrink-0 text-xl">📍</div>
+                        <div>
+                            <h4 class="font-bold text-white">Dirección</h4>
+                            <p id="txt-direccion">Cargando...</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-lg bg-red-600/20 text-red-500 flex items-center justify-center shrink-0 text-xl">🕒</div>
+                        <div>
+                            <h4 class="font-bold text-white">Horario de Atención</h4>
+                            <p id="txt-horario">Cargando...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex flex-wrap gap-4">
+                    <a id="btn-maps" href="#" target="_blank" 
+                       class="bg-zinc-800 hover:bg-zinc-700 border border-zinc-600 text-white px-6 py-3 rounded-xl font-semibold text-sm flex items-center space-x-2">
+                        <i class="fas fa-map-marked-alt text-red-500"></i>
+                        <span>Cómo llegar en Google Maps</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full h-80 rounded-2xl overflow-hidden border border-red-800/40 shadow-2xl">
+                <iframe id="iframe-maps" width="100%" height="100%" style="border:0" loading="lazy" allowfullscreen 
+                    src="https://maps.google.com/maps?q=Av.+Universitaria+1450,+San+Miguel,+Lima&output=embed">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-10 border-t border-zinc-900 text-center text-xs text-gray-500">
+        <div id="footer-socials" class="flex justify-center space-x-6 mb-6 text-xl"></div>
+        <p>© 2026 Pollería & Parrillas Don Tito. Todos los derechos reservados.</p>
+        <p class="mt-1">San Miguel, Lima, Perú</p>
     </footer>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
-    <a id="floatWspBtn" href="#" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/50 transition-all transform hover:scale-110 animate-pulse-subtle" aria-label="Contacto por WhatsApp">
-        <i class="fab fa-whatsapp text-3xl"></i>
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a id="float-ws" href="#" target="_blank" 
+       class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-50 text-2xl transition-transform transform hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- LÓGICA DE CONEXIÓN APPS SCRIPT -->
     <script>
-        /**
-         * CONFIGURACIÓN TÉCNICA Y CLIENTE
-         * Reemplazar API_URL con la URL desplegada del script de Google Apps Script cuando esté lista.
-         */
-        const API_URL = ""; // Ej: "https://script.google.com/macros/s/AKfycbx.../exec"
+        // PEGA AQUÍ TU URL DE APPS SCRIPT OBTENIDA DE GOOGLE SHEETS:
+        const API_URL = "https://script.google.com/macros/s/AKfycby4zGjkmSvS4R5BI62kubJILIAtpza_sT9p9jSC2wG-IIbOLiKQH2lo69EOOMSxmM2d/exec"; 
 
-        // Datos por defecto (FALLBACK COMPLETO)
-        const DEFAULT_CONFIG = {
-            nombre_comercial: "Pollería & Parrillas Don Tito",
-            whatsapp: "51987654321",
-            ubicacion: "Av. Universitaria 1450, San Miguel, Lima, Perú",
-            horario: "Lun - Dom: 12:00 PM - 11:00 PM",
-            facebook: "https://facebook.com",
-            instagram: "https://instagram.com",
-            banner_url: "./banner.jpg",
-            logo_url: "./logo.jpg"
-        };
-
-        const DEFAULT_CARTA = [
-            {
-                id: "1",
-                nombre: "1 Pollo entero + Papas + Ensalada",
-                categoria: "Pollos a la Brasa",
-                precio: "65.00",
-                descripcion: "Delicioso pollo a la brasa dorado y jugoso, acompañado de abundantes papas fritas crocantes y ensalada fresca con aliño especial de la casa.",
-                etiqueta: "Popular",
-                imagen: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=800&auto=format&fit=crop"
-            },
-            {
-                id: "2",
-                nombre: "1/2 Pollo a la Brasa Combo",
-                categoria: "Pollos a la Brasa",
-                precio: "38.00",
-                descripcion: "Medio pollo a la brasa sazonado a la perfección, papas fritas familiares, ensalada y cremas variadas.",
-                etiqueta: "Oferta",
-                imagen: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=800&auto=format&fit=crop"
-            },
-            {
-                id: "3",
-                nombre: "Parrilla Familiar Don Tito",
-                categoria: "Parrillas",
-                precio: "110.00",
-                descripcion: "Corte de bife angus, 2 anticuchos de corazón, 2 chorizos parrilleros, chuleta de cerdo, acompañado de papas doradas y ensalada cocida.",
-                etiqueta: "Nuevo",
-                imagen: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop"
-            },
-            {
-                id: "4",
-                nombre: "Combo Mega Oferta Familiar",
-                categoria: "Promociones",
-                precio: "85.00",
-                descripcion: "1 Pollo entero a la brasa + Papas Fritas + Ensalada + Gaseosa 1.5L a elección + Chicha Morada de regalo.",
-                etiqueta: "Oferta",
-                imagen: "https://images.unsplash.com/photo-1562967914-608f82629710?q=80&w=800&auto=format&fit=crop"
-            },
-            {
-                id: "5",
-                nombre: "Anticuchos Tradicionales (3 sticks)",
-                categoria: "Parrillas",
-                precio: "28.00",
-                descripcion: "Tres jugosos palitos de anticucho de corazón de res marinados en ají panca, acompañados de choclo tierno y papas doradas.",
-                etiqueta: "Popular",
-                imagen: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
-            },
-            {
-                id: "6",
-                nombre: "Chicha Morada Arequipeña 1L",
-                categoria: "Bebidas y Guarniciones",
-                precio: "14.00",
-                descripcion: "Chicha morada 100% natural hervida con maiz morado, piña, manzana, membrillo y canela.",
-                etiqueta: "",
-                imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=800&auto=format&fit=crop"
-            }
+        const fallbackDishes = [
+            { categoria: 'Pollos a la Brasa', nombre: '1/4 Pollo Don Tito', descripcion: 'Jugoso 1/4 de pollo con papas crocantes, ensalada de la casa y cremas.', precio: '24.00', imagen: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=800', disponible: 'SI', etiqueta: 'Popular' }
         ];
 
-        // Estado Global
-        let currentConfig = { ...DEFAULT_CONFIG };
-        let currentCarta = [...DEFAULT_CARTA];
-        let activeCategory = "Todos";
+        let allDishes = fallbackDishes;
+        let configData = { 
+            whatsapp: "51987654321", 
+            whatsapp_mensaje: "Hola Don Tito, me gustaría realizar un pedido.",
+            direccion: "Av. Universitaria 1450, San Miguel, Lima, Perú", 
+            horario: "Lun - Dom: 12:00 PM - 11:00 PM",
+            modalidad_atencion: "Comedor en Salón • Para Llevar • Delivery",
+            google_maps_url: "https://maps.google.com/?q=Av.+Universitaria+1450,+San+Miguel",
+            facebook: "",
+            instagram: "",
+            tiktok: ""
+        };
 
-        // DOM Loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-            setupMobileMenu();
-            loadAppData();
-        });
+        async function loadData() {
+            generateButtons();
+            renderDishes(allDishes);
+            applyConfig();
 
-        // Configurar Menú Móvil
-        function setupMobileMenu() {
-            const btn = document.getElementById('mobileMenuBtn');
-            const menu = document.getElementById('mobileMenu');
-            const icon = document.getElementById('menuIcon');
-            const links = document.querySelectorAll('.mobile-link');
-
-            btn.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-                if(menu.classList.contains('hidden')){
-                    icon.className = "fas fa-bars text-2xl";
-                } else {
-                    icon.className = "fas fa-times text-2xl";
-                }
-            });
-
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    menu.classList.add('hidden');
-                    icon.className = "fas fa-bars text-2xl";
-                });
-            });
-        }
-
-        // Cargar Datos (API o Fallback)
-        async function loadAppData() {
-            if (API_URL && API_URL.trim() !== "") {
+            if (API_URL && API_URL.startsWith("http") && !API_URL.includes("PEGA_AQUI")) {
                 try {
-                    const response = await fetch(API_URL);
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data.config) parseConfig(data.config);
-                        if (data.carta && Array.isArray(data.carta) && data.carta.length > 0) {
-                            currentCarta = data.carta;
+                    const resCarta = await fetch(`${API_URL}?sheet=Carta`);
+                    if (resCarta.ok) {
+                        const data = await resCarta.json();
+                        if (Array.isArray(data) && data.length > 0) {
+                            allDishes = data;
+                            generateButtons();
+                            renderDishes(allDishes);
                         }
                     }
-                } catch (error) {
-                    console.warn("Error al conectar con API_URL. Cargando dataset por defecto.", error);
-                }
-            }
-            renderApp();
-        }
 
-        // Parsear Configuración recibida de la API
-        function parseConfig(configArray) {
-            if (Array.isArray(configArray)) {
-                configArray.forEach(item => {
-                    if (item.clave && item.valor) {
-                        currentConfig[item.clave.toLowerCase()] = item.valor;
+                    const resConfig = await fetch(`${API_URL}?sheet=Config`);
+                    if (resConfig.ok) {
+                        const configArr = await resConfig.json();
+                        if (Array.isArray(configArr)) {
+                            configArr.forEach(item => {
+                                if (item.clave && item.valor) configData[item.clave.toLowerCase().trim()] = item.valor;
+                            });
+                            applyConfig();
+                        }
                     }
-                });
-            } else if (typeof configArray === 'object') {
-                currentConfig = { ...currentConfig, ...configArray };
+                } catch (err) {
+                    console.warn("Error leyendo la API. Usando respaldo de datos.");
+                }
             }
         }
 
-        // Renderizar la Interfaz General
-        function renderApp() {
-            updateConfigUI();
-            renderCategories();
-            renderDishes();
-        }
+        function applyConfig() {
+            document.getElementById('txt-direccion').textContent = configData.direccion || configData.ubicacion || "";
+            document.getElementById('txt-horario').textContent = configData.horario || "";
+            if (configData.modalidad_atencion) {
+                document.getElementById('txt-modalidades').textContent = `🍽️ Atendemos: ${configData.modalidad_atencion}`;
+            }
 
-        // Actualizar datos de Configuración en el DOM y Links de WhatsApp
-        function updateConfigUI() {
-            const phone = currentConfig.whatsapp || "51987654321";
-            const name = currentConfig.nombre_comercial || "Don Tito";
+            if (configData.google_maps_url) {
+                document.getElementById('btn-maps').href = configData.google_maps_url;
+            }
+
+            const wsNum = (configData.whatsapp || "51987654321").toString().replace(/\D/g, '');
+            const msgPre = encodeURIComponent(configData.whatsapp_mensaje || "Hola Don Tito, quisiera consultar la carta.");
+            const wsUrl = `https://wa.me/${wsNum}?text=${msgPre}`;
             
-            // Textos generales
-            document.getElementById('navBrandName').textContent = name;
-            document.getElementById('footerBrandName').textContent = name;
-            document.getElementById('heroAddress').textContent = currentConfig.ubicacion;
-            document.getElementById('infoAddress').textContent = currentConfig.ubicacion;
-            document.getElementById('heroHours').textContent = currentConfig.horario;
-            document.getElementById('infoHours').textContent = currentConfig.horario;
-            document.getElementById('heroPhone').textContent = "+" + phone;
-            document.getElementById('infoPhone').textContent = "+" + phone;
+            document.getElementById('nav-ws-btn').href = wsUrl;
+            document.getElementById('hero-delivery-btn').href = wsUrl;
+            document.getElementById('float-ws').href = wsUrl;
 
-            // Redes sociales
-            if(currentConfig.facebook) {
-                document.getElementById('navFb').href = currentConfig.facebook;
-                document.getElementById('mobileFb').href = currentConfig.facebook;
-                document.getElementById('footerFb').href = currentConfig.facebook;
-            }
-            if(currentConfig.instagram) {
-                document.getElementById('navIg').href = currentConfig.instagram;
-                document.getElementById('mobileIg').href = currentConfig.instagram;
-                document.getElementById('footerIg').href = currentConfig.instagram;
-            }
+            // RENDER DINÁMICO DE REDES SOCIALES
+            const navSocials = document.getElementById('nav-socials');
+            const footerSocials = document.getElementById('footer-socials');
+            navSocials.innerHTML = '';
+            footerSocials.innerHTML = '';
 
-            // Imágenes con Fallback
-            if(currentConfig.logo_url && currentConfig.logo_url !== "./logo.jpg") {
-                document.getElementById('navLogo').src = currentConfig.logo_url;
-                document.getElementById('footerLogo').src = currentConfig.logo_url;
-            }
-            if(currentConfig.banner_url && currentConfig.banner_url !== "./banner.jpg") {
-                document.getElementById('heroBanner').src = currentConfig.banner_url;
-            }
+            const networks = [
+                { id: 'facebook', icon: 'fab fa-facebook-f', color: 'hover:text-blue-500' },
+                { id: 'instagram', icon: 'fab fa-instagram', color: 'hover:text-pink-500' },
+                { id: 'tiktok', icon: 'fab fa-tiktok', color: 'hover:text-cyan-400' }
+            ];
 
-            // Enlaces generales de WhatsApp
-            const defaultMsg = encodeURIComponent(`¡Hola ${name}! Quisiera realizar un pedido y consultar la carta.`);
-            const wspUrl = `https://wa.me/${phone}?text=${defaultMsg}`;
-
-            document.getElementById('navWspBtn').href = wspUrl;
-            document.getElementById('mobileWspBtn').href = wspUrl;
-            document.getElementById('heroWspBtn').href = wspUrl;
-            document.getElementById('sectionWspBtn').href = wspUrl;
-            document.getElementById('floatWspBtn').href = wspUrl;
-        }
-
-        // Obtener categorías únicas dinámicamente
-        function getCategories() {
-            const categories = ["Todos"];
-            currentCarta.forEach(dish => {
-                if (dish.categoria && !categories.includes(dish.categoria.trim())) {
-                    categories.push(dish.categoria.trim());
+            networks.forEach(net => {
+                const url = configData[net.id];
+                if (url && url.toString().startsWith('http')) {
+                    navSocials.innerHTML += `<a href="${url}" target="_blank" class="text-gray-400 ${net.color} transition-colors text-base p-1"><i class="${net.icon}"></i></a>`;
+                    footerSocials.innerHTML += `<a href="${url}" target="_blank" class="text-gray-400 ${net.color} transition-colors p-2 bg-zinc-900 rounded-full w-10 h-10 flex items-center justify-center border border-zinc-800"><i class="${net.icon}"></i></a>`;
                 }
             });
-            return categories;
         }
 
-        // Renderizar Filtros de Categoría
-        function renderCategories() {
-            const categories = getCategories();
-            const container = document.getElementById('categoryFilters');
-            container.innerHTML = "";
-
+        function generateButtons() {
+            const container = document.getElementById('category-filters');
+            container.innerHTML = `<button onclick="filterCategory('TODOS', this)" class="cat-btn active bg-red-600 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all">Todos</button>`;
+            
+            const categories = [...new Set(allDishes.map(d => d.categoria))];
             categories.forEach(cat => {
-                const btn = document.createElement('button');
-                const isActive = cat === activeCategory;
+                if(cat) {
+                    const btn = document.createElement('button');
+                    btn.className = "cat-btn bg-zinc-900 hover:bg-red-950 text-gray-300 px-5 py-2 rounded-full text-sm font-semibold transition-all border border-zinc-800";
+                    btn.textContent = cat;
+                    btn.onclick = (e) => filterCategory(cat, e.target);
+                    container.appendChild(btn);
+                }
+            });
+        }
+
+        function renderDishes(dishes) {
+            const container = document.getElementById('dishes-container');
+            container.innerHTML = '';
+            const activeDishes = dishes.filter(d => (d.disponible || 'SI').toString().toUpperCase() === 'SI');
+
+            activeDishes.forEach(dish => {
+                const wsNum = (configData.whatsapp || "51987654321").toString().replace(/\D/g, '');
+                const wsText = encodeURIComponent(`Hola Don Tito, quisiera pedir: *${dish.nombre}* (S/ ${dish.precio}).`);
+                const imgSrc = (dish.imagen && dish.imagen.startsWith('http')) ? dish.imagen : 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=800';
                 
-                btn.className = `px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-200 border ${
-                    isActive 
-                    ? 'bg-brand-red text-white border-brand-red shadow-lg shadow-brand-red/30' 
-                    : 'bg-brand-card text-gray-300 border-brand-border hover:bg-zinc-700 hover:text-white'
-                }`;
-                btn.textContent = cat;
-                btn.onclick = () => {
-                    activeCategory = cat;
-                    renderCategories();
-                    renderDishes();
-                };
-                container.appendChild(btn);
-            });
-        }
+                const badgeHtml = dish.etiqueta ? `<span class="absolute top-3 right-3 bg-red-600 text-white font-extrabold text-xs uppercase px-3 py-1 rounded-full shadow-md z-10">${dish.etiqueta}</span>` : '';
 
-        // Renderizar Lista de Platos
-        function renderDishes() {
-            const grid = document.getElementById('dishesGrid');
-            const emptyMsg = document.getElementById('emptyMessage');
-            grid.innerHTML = "";
-
-            const filteredDishes = activeCategory === "Todos" 
-                ? currentCarta 
-                : currentCarta.filter(d => d.categoria && d.categoria.trim() === activeCategory);
-
-            if (filteredDishes.length === 0) {
-                emptyMsg.classList.remove('hidden');
-                return;
-            } else {
-                emptyMsg.classList.add('hidden');
-            }
-
-            filteredDishes.forEach(dish => {
-                const card = createDishCard(dish);
-                grid.appendChild(card);
-            });
-        }
-
-        // Crear Tarjeta para un Plato (Card)
-        function createDishCard(dish) {
-            const card = document.createElement('div');
-            card.className = "bg-brand-card rounded-2xl overflow-hidden border border-brand-border/80 shadow-xl flex flex-col hover:border-brand-gold/50 transition-all duration-300 hover:-translate-y-1 group";
-
-            // Mensaje individual para WhatsApp
-            const phone = currentConfig.whatsapp || "51987654321";
-            const dishMsg = encodeURIComponent(`¡Hola ${currentConfig.nombre_comercial}! Deseo pedir: *${dish.nombre}* (S/. ${parseFloat(dish.precio).toFixed(2)}).`);
-            const dishWspUrl = `https://wa.me/${phone}?text=${dishMsg}`;
-
-            // Badge HTML
-            let badgeHtml = "";
-            if (dish.etiqueta) {
-                const tag = dish.etiqueta.trim();
-                let badgeStyle = "bg-brand-gold text-brand-dark";
-                if (tag.toLowerCase() === 'oferta') badgeStyle = "bg-brand-red text-white";
-                if (tag.toLowerCase() === 'nuevo') badgeStyle = "bg-emerald-500 text-white";
-
-                badgeHtml = `<span class="absolute top-3 right-3 ${badgeStyle} text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md z-10">${tag}</span>`;
-            }
-
-            // Imagen Fallback
-            const fallbackImg = "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop";
-
-            card.innerHTML = `
-                <div class="relative h-48 sm:h-52 w-full overflow-hidden bg-zinc-800">
-                    ${badgeHtml}
-                    <img 
-                        src="${dish.imagen || fallbackImg}" 
-                        alt="${dish.nombre}" 
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        onerror="this.onerror=null; this.src='${fallbackImg}';"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent opacity-80"></div>
-                </div>
-
-                <div class="p-5 flex-grow flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs font-semibold text-brand-gold uppercase tracking-wider">${dish.categoria || 'Especialidad'}</span>
-                        <h3 class="text-lg font-bold text-white mt-1 group-hover:text-brand-gold transition-colors line-clamp-1">${dish.nombre}</h3>
-                        <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">${dish.descripcion || 'Preparado con nuestra sazón especial de la casa e ingredientes de primera calidad.'}</p>
-                    </div>
-
-                    <div class="mt-6 pt-4 border-t border-brand-border/60 flex items-center justify-between">
+                container.innerHTML += `
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between hover:border-red-600/50 transition-all relative">
                         <div>
-                            <span class="text-xs text-gray-400 block font-medium">Precio</span>
-                            <span class="text-xl font-black text-white">S/. ${parseFloat(dish.precio || 0).toFixed(2)}</span>
+                            <div class="relative">
+                                ${badgeHtml}
+                                <img src="${imgSrc}" alt="${dish.nombre}" class="w-full h-48 object-cover" onerror="this.src='https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=800'">
+                            </div>
+                            <div class="p-5">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold text-lg text-white">${dish.nombre}</h3>
+                                    <span class="text-amber-400 font-extrabold text-lg">S/ ${dish.precio}</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">${dish.descripcion || ''}</p>
+                            </div>
                         </div>
-                        <a 
-                            href="${dishWspUrl}" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="bg-brand-red hover:bg-red-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-md flex items-center space-x-1.5"
-                        >
-                            <i class="fab fa-whatsapp text-sm"></i>
-                            <span>Pedir</span>
-                        </a>
+                        <div class="p-5 pt-0">
+                            <a href="https://wa.me/${wsNum}?text=${wsText}" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center space-x-2 text-sm transition-colors">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Pedir este plato</span>
+                            </a>
+                        </div>
                     </div>
-                </div>
-            `;
-
-            return card;
+                `;
+            });
         }
+
+        function filterCategory(cat, btnElement) {
+            document.querySelectorAll('.cat-btn').forEach(b => {
+                b.classList.remove('bg-red-600', 'text-white');
+                b.classList.add('bg-zinc-900', 'text-gray-300');
+            });
+            btnElement.classList.remove('bg-zinc-900', 'text-gray-300');
+            btnElement.classList.add('bg-red-600', 'text-white');
+            renderDishes(cat === 'TODOS' ? allDishes : allDishes.filter(d => d.categoria === cat));
+        }
+
+        window.addEventListener('DOMContentLoaded', loadData);
     </script>
 </body>
 </html>
